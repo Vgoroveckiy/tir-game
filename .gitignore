@@ -1,5 +1,5 @@
 # Python cache
-__pycache__/
+__pycache__
 *.py[cod]
 *$py.class
 
@@ -9,3 +9,20 @@ venv/
 
 # IDE settings
 .vscode/
+.idea/
+
+# Test directories and files
+tests/__pycache__
+tests/*.log
+
+# Build artifacts
+*.egg-info/
+.build*
+.dist-info/
+*.pyo
+*.pyc
+.pytest_cache/
+
+# Local configuration files
+.localrc
+.env
