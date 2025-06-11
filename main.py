@@ -26,6 +26,7 @@ target_y = random.randint(0, SCREEN_HEIGHT - target_height)
 color = (random.randint(0, 255), random.randint(0, 255), random.randint(0, 255))
 
 score = 0
+font = pygame.font.Font(None, 36)  # Инициализация шрифта для отображения очков
 
 running = True
 clock = pygame.time.Clock()  # Добавляем часы для управления частотой обновления экрана
@@ -44,10 +45,16 @@ while running:
                 and mouse_y >= target_y
                 and mouse_y <= target_y + target_height
             ):
+                score += 1  # Увеличиваем счет при попадании
                 target_x = random.randint(0, SCREEN_WIDTH - target_width)
                 target_y = random.randint(0, SCREEN_HEIGHT - target_height)
 
     screen.blit(target_img, (target_x, target_y))
+
+    # Отображение счета с контрастным цветом
+    text_color = tuple(255 - c for c in color)  # Инвертируем цвет фона
+    score_text = font.render(f"Очки: {score}", True, text_color)
+    screen.blit(score_text, (10, 10))
 
     pygame.display.update()
     clock.tick(60)  # Устанавливаем частоту обновления экрана в 60 кадров в секунду
